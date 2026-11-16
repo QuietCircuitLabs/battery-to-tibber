@@ -1,0 +1,26 @@
+name: Problem report
+description: Report a problem with Battery to Tibber
+body:
+  - type: markdown
+    attributes:
+      value: Please do not post credentials, tokens, private contact details, exact home locations or unredacted status dumps.
+  - type: input
+    id: versions
+    attributes:
+      label: App and Homey versions
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Your setup
+      description: Car model, Homey car app and version, charger integration, device or Flow source, optional AC target/home/refresh settings.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: What did you expect, what happened instead, and which plain-language status message was shown?
+    validations:
+      required: true
