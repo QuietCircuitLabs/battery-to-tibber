@@ -1,0 +1,12 @@
+test/
+*.md
+node_modules/
+*.zip
+qa/
+assets/images/small.png
+assets/images/large.png
+assets/images/ev9-tibber-small.png
+assets/images/ev9-tibber-large.png
+drivers/bridge/assets/images/small.png
+drivers/bridge/assets/images/large.png
+support/

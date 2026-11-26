@@ -1,0 +1,271 @@
+{
+  "id": "app.socbridge.ev9",
+  "version": "0.4.0",
+  "compatibility": ">=12.4.5",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Battery to Tibber",
+    "sv": "Battery to Tibber"
+  },
+  "description": {
+    "en": "Let your charging plan follow your car battery",
+    "sv": "Låt laddplaneringen följa bilens batteri"
+  },
+  "category": [
+    "energy"
+  ],
+  "brandColor": "#165D63",
+  "author": {
+    "name": "Kristjan"
+  },
+  "support": "https://github.com/QuietCircuitLabs/battery-to-tibber/issues",
+  "bugs": {
+    "url": "https://github.com/QuietCircuitLabs/battery-to-tibber/issues"
+  },
+  "homepage": "https://github.com/QuietCircuitLabs/battery-to-tibber",
+  "permissions": [
+    "homey:manager:api",
+    "homey:manager:geolocation"
+  ],
+  "images": {
+    "small": "/assets/images/battery-tibber-small.png",
+    "large": "/assets/images/battery-tibber-large.png"
+  },
+  "drivers": [
+    {
+      "id": "bridge",
+      "name": {
+        "en": "Tibber updates",
+        "sv": "Tibber-uppdatering"
+      },
+      "class": "other",
+      "capabilities": [
+        "onoff",
+        "measure_soc",
+        "measure_soc.planning"
+      ],
+      "capabilitiesOptions": {
+        "measure_soc.planning": {
+          "title": {
+            "en": "Planning level",
+            "sv": "Planeringsvärde"
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/bridge/assets/images/neutral-small.png",
+        "large": "/drivers/bridge/assets/images/neutral-large.png"
+      },
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    }
+  ],
+  "api": {
+    "status": {
+      "method": "GET",
+      "path": "/status"
+    },
+    "options": {
+      "method": "GET",
+      "path": "/options"
+    },
+    "configure": {
+      "method": "POST",
+      "path": "/configure"
+    },
+    "login": {
+      "method": "POST",
+      "path": "/login"
+    },
+    "vehicles": {
+      "method": "POST",
+      "path": "/vehicles"
+    },
+    "preview": {
+      "method": "POST",
+      "path": "/preview"
+    },
+    "testWrite": {
+      "method": "POST",
+      "path": "/test"
+    },
+    "enable": {
+      "method": "POST",
+      "path": "/enable"
+    },
+    "pause": {
+      "method": "POST",
+      "path": "/pause"
+    },
+    "sync": {
+      "method": "POST",
+      "path": "/sync"
+    },
+    "logout": {
+      "method": "POST",
+      "path": "/logout"
+    },
+    "address": {
+      "method": "POST",
+      "path": "/address"
+    }
+  },
+  "flow": {
+    "actions": [
+      {
+        "id": "sync",
+        "title": {
+          "en": "Update the battery value in Tibber now",
+          "sv": "Uppdatera batterivärdet i Tibber nu"
+        }
+      },
+      {
+        "id": "pause",
+        "title": {
+          "en": "Pause automatic Tibber updates",
+          "sv": "Pausa automatisk uppdatering av Tibber"
+        }
+      },
+      {
+        "id": "resume",
+        "title": {
+          "en": "Resume automatic Tibber updates",
+          "sv": "Återuppta automatisk uppdatering av Tibber"
+        }
+      },
+      {
+        "id": "connected",
+        "hint": {
+          "en": "For charger detection via Flow. Run when your home charger reports a connected car. This action reports a connection; it does not start charging.",
+          "sv": "För laddaravkänning via Flow. Kör när hemmaladdaren rapporterar en ansluten bil. Kortet meddelar en anslutning; det startar inte laddningen."
+        },
+        "title": {
+          "en": "Tell the app a car is plugged in at home",
+          "sv": "Meddela appen att en bil är inkopplad hemma"
+        }
+      },
+      {
+        "id": "disconnected",
+        "hint": {
+          "en": "For charger detection via Flow. Run when the car disconnects from your home charger.",
+          "sv": "För laddaravkänning via Flow. Kör när bilen kopplas från hemmaladdaren."
+        },
+        "title": {
+          "en": "Tell the app the home charger is unplugged",
+          "sv": "Meddela appen att bilen kopplats ur hemma"
+        }
+      },
+      {
+        "id": "set_soc",
+        "hint": {
+          "en": "Advanced: for Flow as the battery data source. Provide the actual battery percentage and AC target; the app calculates the Tibber planning value.",
+          "sv": "Avancerat: för Flow som datakälla. Ange faktisk batteriprocent och AC-laddgräns; appen räknar fram Tibbers planeringsvärde."
+        },
+        "title": {
+          "en": "Provide battery level and charge limit via Flow",
+          "sv": "Ange batterinivå och laddgräns via Flow"
+        },
+        "args": [
+          {
+            "name": "soc",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "title": {
+              "en": "Actual battery %",
+              "sv": "Faktiskt batteri %"
+            }
+          },
+          {
+            "name": "target",
+            "type": "number",
+            "min": 50,
+            "max": 100,
+            "title": {
+              "en": "AC charge limit %",
+              "sv": "AC-laddgräns %"
+            }
+          }
+        ],
+        "titleFormatted": {
+          "en": "Provide battery [[soc]] % and AC charge limit [[target]] %",
+          "sv": "Ange batterinivå [[soc]] % och AC-laddgräns [[target]] %"
+        }
+      },
+      {
+        "id": "set_soc_only",
+        "title": {
+          "en": "Provide battery level from Flow",
+          "sv": "Ange batterinivå från Flow"
+        },
+        "titleFormatted": {
+          "en": "Provide battery level [[soc]] %",
+          "sv": "Ange batterinivå [[soc]] %"
+        },
+        "hint": {
+          "en": "Supply a current vehicle battery percentage. No charge limit is needed. Only for Flow input mode; the Flow must enforce any desired connection or home checks.",
+          "sv": "Lämna en aktuell batteriprocent för bilen. Laddgräns behövs inte. Bara för Flow som datakälla; Flowet ansvarar för önskade inkopplings- och hemkontroller."
+        },
+        "args": [
+          {
+            "name": "soc",
+            "type": "number",
+            "min": 0,
+            "max": 100,
+            "title": {
+              "en": "Actual battery %",
+              "sv": "Faktiskt batteri %"
+            }
+          }
+        ]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "refresh_requested",
+        "title": {
+          "en": "A vehicle status refresh is requested",
+          "sv": "En uppdatering av bilens status begärs"
+        },
+        "hint": {
+          "en": "Optional. Connect to your vehicle app’s refresh action. Uses the interval selected in setup; an event is not confirmation of fresh vehicle data.",
+          "sv": "Valfritt. Koppla till bilappens uppdateringskort. Använder intervallet du valt i guiden; en händelse bekräftar inte att biluppgifterna är färska."
+        }
+      }
+    ]
+  },
+  "capabilities": {
+    "measure_soc": {
+      "type": "number",
+      "title": {
+        "en": "Vehicle battery",
+        "sv": "Bilens batteri"
+      },
+      "units": {
+        "en": "%"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "min": 0,
+      "max": 100,
+      "decimals": 1,
+      "icon": "/assets/icon.svg"
+    }
+  }
+}
