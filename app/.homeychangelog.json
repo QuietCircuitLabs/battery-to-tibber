@@ -1,0 +1,14 @@
+{
+  "0.3.3": {
+    "en": "Clearer Kia EV9 app name, setup labels and Flow cards. Expanded requirements, tested setup and explanation of Tibber's adjusted battery planning value. Charging and synchronization behavior are unchanged.",
+    "sv": "Tydligare Kia EV9-namn, installationstexter och Flow-kort. Förklarar förutsättningar, testad utrustning och Tibbers anpassade batterivärde. Laddning och synkronisering fungerar som tidigare."
+  },
+  "0.3.2": {
+    "en": "Initial test release. Guided Kia EV9 and Tibber setup, AC-limit compensation, home and connection checks, secure local sign-in storage, guarded automatic reconnection, and English and Swedish Instrument interface. Verified pilot with Homey Pro, Kia EV9 and Zaptec.",
+    "sv": "Första testversionen. Guidad installation för Kia EV9 och Tibber, kompensation för AC-gräns, hem- och inkopplingskontroll, lokal inloggningslagring, skyddad automatisk återanslutning och Instrument-gränssnitt på svenska och engelska. Pilot testad med Homey Pro, Kia EV9 och Zaptec."
+  },
+  "0.4.0": {
+    "en": "Brand-neutral battery input from Homey devices or Flow. Optional AC charge target and home location check. Configurable vehicle/charger connection checks and opt-in guarded refresh requests. Updated setup and short permission explanation.",
+    "sv": "Batterivärden från valfri kompatibel Homey-enhet eller Flow. Valfri AC-laddgräns och hemkontroll. Valbara inkopplingskontroller och försiktiga statusförfrågningar efter eget val. Ny installationsguide och kort förklaring av behörigheter."
+  }
+}

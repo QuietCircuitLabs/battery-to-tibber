@@ -1,0 +1,9 @@
+node_modules/
+.homeybuild/
+env.json
+.env
+.env.*
+*.log
+*.zip
+*.tar.gz
+qa/
