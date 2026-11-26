@@ -1,7 +1,9 @@
 # Battery to Tibber – kom igång
 
-Guiden gäller den kommande testversionen 0.4.0. Den publicerade testversionen
-kan tills vidare ha andra installationssteg och Flow-kort.
+Appens [källkod](app/) finns här för granskning. Inloggning, lagring och dataflöden
+beskrivs i [SECURITY.md](SECURITY.md) på engelska.
+
+Guiden gäller version 0.4.0, som finns i Homey App Store.
 
 Appen lämnar batteriprocent till din manuellt tillagda bil i Tibber. Tibber
 behåller laddstyrningen. Testad fysisk installation: Homey Pro, Kia EV9,

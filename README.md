@@ -1,7 +1,11 @@
 # Battery to Tibber
 
-This guide describes the upcoming 0.4.0 beta. The currently published test
-version may show different setup steps and Flow cards.
+The app's [source code](app/) is available here for inspection. This is the
+0.4.0 release snapshot, including the application, current artwork and automated
+tests. It does not contain developer QA tools or any user's Homey configuration.
+See [SECURITY.md](SECURITY.md) for sign-in, storage and data flow details.
+
+This guide describes version 0.4.0, available in the Homey App Store.
 
 Automatically supply the battery level of a manually added Tibber vehicle from
 a selected device in Homey, or from Flow. Tibber retains charging control.
